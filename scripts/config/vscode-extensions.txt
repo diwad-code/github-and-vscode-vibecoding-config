@@ -1,0 +1,60 @@
+# Copilot + GitHub
+GitHub.copilot
+GitHub.copilot-chat
+GitHub.vscode-pull-request-github
+github.vscode-github-actions
+
+# Core productivity
+eamodio.gitlens
+donjayamanne.githistory
+usernamehw.errorlens
+wayou.vscode-todo-highlight
+christian-kohler.path-intellisense
+streetsidesoftware.code-spell-checker
+ms-vscode.hexeditor
+ritwickdey.LiveServer
+
+# Frontend / web
+dbaeumer.vscode-eslint
+esbenp.prettier-vscode
+bradlc.vscode-tailwindcss
+formulahendry.auto-rename-tag
+ecmel.vscode-html-css
+ms-vscode.vscode-typescript-next
+Vue.volar
+svelte.svelte-vscode
+angular.ng-template
+
+# Backend / APIs
+rangav.vscode-thunder-client
+ms-azuretools.vscode-docker
+ms-vscode-remote.remote-containers
+redhat.vscode-yaml
+ms-kubernetes-tools.vscode-kubernetes-tools
+
+# Python
+ms-python.python
+ms-python.vscode-pylance
+ms-python.black-formatter
+charliermarsh.ruff
+
+# .NET / C# / desktop
+ms-dotnettools.csharp
+ms-dotnettools.vscode-dotnet-runtime
+
+# Go / Rust / TOML
+golang.go
+rust-lang.rust-analyzer
+tamasfe.even-better-toml
+
+# PowerShell / Windows automation
+ms-vscode.powershell
+
+# Pixel-art / game / docs
+geequlim.godot-tools
+bierner.markdown-mermaid
+shd101wyy.markdown-preview-enhanced
+
+# UI/UX themes
+pkief.material-icon-theme
+zhuangtongfa.material-theme
