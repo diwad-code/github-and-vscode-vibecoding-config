@@ -13,8 +13,9 @@ christian-kohler.path-intellisense
 streetsidesoftware.code-spell-checker
 ms-vscode.hexeditor
 ritwickdey.LiveServer
+EditorConfig.EditorConfig
 
-# Frontend / web
+# Frontend / web / business sites
 dbaeumer.vscode-eslint
 esbenp.prettier-vscode
 bradlc.vscode-tailwindcss
@@ -24,13 +25,23 @@ ms-vscode.vscode-typescript-next
 Vue.volar
 svelte.svelte-vscode
 angular.ng-template
+astro-build.astro
+Prisma.prisma
+GraphQL.vscode-graphql
+unifiedjs.vscode-mdx
 
-# Backend / APIs
+# Accessibility / SEO / quality
+deque-systems.vscode-axe-linter
+bierner.lit-html
+stylelint.vscode-stylelint
+
+# Backend / APIs / DevOps
 rangav.vscode-thunder-client
 ms-azuretools.vscode-docker
 ms-vscode-remote.remote-containers
 redhat.vscode-yaml
 ms-kubernetes-tools.vscode-kubernetes-tools
+hashicorp.terraform
 
 # Python
 ms-python.python
@@ -54,6 +65,11 @@ ms-vscode.powershell
 geequlim.godot-tools
 bierner.markdown-mermaid
 shd101wyy.markdown-preview-enhanced
+jebbs.plantuml
+
+# Android / hybrid apps
+redhat.java
+vscjava.vscode-java-pack
 
 # UI/UX themes
 pkief.material-icon-theme

@@ -1,0 +1,17 @@
+{
+  "installRootName": ".vibe-coding\\skills",
+  "items": [
+    {
+      "name": "web-game-vibe-coding",
+      "description": "Workflow dla web games, pixel-art, Phaser/Pixi/Three/Babylon i buildów Android przez Capacitor.",
+      "source": "local",
+      "path": "scripts\\skills\\web-game-vibe-coding.md"
+    },
+    {
+      "name": "business-websites-vibe-coding",
+      "description": "Workflow dla profesjonalnych stron firmowych, SEO, performance, accessibility i deploymentu.",
+      "source": "local",
+      "path": "scripts\\skills\\business-websites-vibe-coding.md"
+    }
+  ]
+}
