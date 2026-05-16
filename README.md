@@ -85,7 +85,7 @@ Skrypty są idempotentne i kontynuują pracę przy błędach pojedynczych pakiet
 
 - Wspólne ustawienia aktywują agent mode, `AGENTS.md`, MCP discovery/gallery, Copilot code actions, code search i next edit suggestions.
 - Repo nie pinuje zewnętrznych serwerów MCP na sztywno, żeby nie dodawać niezatwierdzonych integracji; zamiast tego przygotowuje VS Code/Insiders do ich wykrywania i bezpiecznego dodania.
-- Najlepsze praktyki na 2026 w tym repo to: repo-wide instructions w `.github/copilot-instructions.md`, root `AGENTS.md`, lokalne skille w `~\.vibe-coding\skills` oraz ręczne dodawanie tylko potrzebnych MCP serverów z zaufanych źródeł.
+- Najlepsze praktyki na 2026 w tym repo to: repo-wide instructions w `.github/copilot-instructions.md`, root `AGENTS.md`, lokalne skille w `~\.vibe-coding\skills` oraz ręczne dodawanie tylko potrzebnych serwerów MCP z zaufanych źródeł.
 
 ## Po instalacji
 

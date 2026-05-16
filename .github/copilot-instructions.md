@@ -5,4 +5,4 @@
 - Nie dodawaj ciężkich integracji ani silników spoza web stacku, jeśli nie dają jasnej korzyści dla tego repo.
 - Przy zmianach konfiguracji preferuj Copilot, prompt/instructions files, lokalne skille i zatwierdzone MCP serwery zamiast losowych dodatków.
 - Dbaj o accessibility, performance, security i czytelny minimalny zakres zmian.
-- Nie dodawaj ani nie konfiguruj zewnętrznych MCP serverów bez sprawdzenia źródła i uprawnień.
+- Nie dodawaj ani nie konfiguruj zewnętrznych serwerów MCP bez sprawdzenia źródła i uprawnień.

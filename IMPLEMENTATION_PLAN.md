@@ -43,4 +43,4 @@ Zbudować potężny, automatyczny zestaw skryptów dla Windows 11, VS Code i VS 
 - [ ] Dodać opcjonalny manifest z firmowymi, zatwierdzonymi zdalnymi skillami po wskazaniu URL-i.
 - [ ] Dodać test uruchamiany na Windows runnerze, jeżeli repo dostanie CI.
 - [ ] Rozważyć pinning wersji narzędzi npm/pip w osobnych manifestach enterprise.
-- [ ] Rozważyć wersjonowany przykładowy `.vscode/mcp.json`, jeśli zespół wybierze konkretny zestaw zatwierdzonych MCP serverów.
+- [ ] Rozważyć wersjonowany przykładowy `.vscode/mcp.json`, jeśli zespół wybierze konkretny zestaw zatwierdzonych serwerów MCP.
