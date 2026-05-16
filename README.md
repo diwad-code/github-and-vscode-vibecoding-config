@@ -17,11 +17,11 @@ Szczegółowy plan wdrożenia oraz lista TODO dla kolejnych AI znajduje się w:
 - Edytory: VS Code oraz opcjonalnie VS Code Insiders.
 - Copilot/GitHub: Copilot, Copilot Chat, GitHub PR, GitHub Actions, GitHub CLI.
 - Web/business: Node.js, pnpm, yarn, Vite, Next.js, Angular, Astro, Tailwind, ESLint, Prettier, Stylelint.
-- Game/web: Live Server, Godot tools, Markdown/Mermaid, CLI pod prototypowanie web games.
+- Game/web: Live Server, Godot tools, Unity, C/C++ + CMake pod natywne moduły, Blender workflow, Markdown/Mermaid, CLI pod prototypowanie web games.
 - Android hybrid: Android Studio, JDK, Ionic, Capacitor, native-run, Cordova.
 - Backend/devops: Docker, Dev Containers, Kubernetes, YAML, Terraform, Postman/Thunder Client.
 - Python/.NET/Go/Rust: runtime’y, rozszerzenia i podstawowe narzędzia.
-- Skille: lokalne workflow dla web games i profesjonalnych stron firmowych kopiowane do `~\.vibe-coding\skills`.
+- Skille: lokalne workflow dla web games, Godot, Unity, pipeline assetów i profesjonalnych stron firmowych kopiowane do `~\.vibe-coding\skills`.
 
 ## Struktura
 
@@ -31,7 +31,7 @@ Szczegółowy plan wdrożenia oraz lista TODO dla kolejnych AI znajduje się w:
 - `/scripts/config/vscode-extensions.txt` – pełna lista rozszerzeń.
 - `/scripts/config/vscode-settings.json` – szablon ustawień UI/UX i produktywności.
 - `/scripts/config/skills-manifest.json` – manifest lokalnych i opcjonalnych zdalnych skilli.
-- `/scripts/skills/` – lokalne skille startowe.
+- `/scripts/skills/` – lokalne skille startowe dla web/business/gamedev.
 
 ## Szybki start: pełny tryb z VS Code Insiders i Androidem
 
@@ -72,6 +72,12 @@ Skrypty są idempotentne i kontynuują pracę przy błędach pojedynczych pakiet
 - VS Code Insiders ma fallback do stable VS Code, jeśli `code-insiders` nie jest dostępny.
 - Niepoprawny istniejący `settings.json` jest backupowany przed nadpisaniem ustawień z szablonu.
 - Skille z manifestu mogą być lokalne albo zdalne; błędy pobierania nie blokują konfiguracji edytora.
+
+## Domyślne modele Copilot
+
+- Inline completions są pinowane w konfiguracji na `GPT-5.4`.
+- Dla chat/agent workflow w skillach repo przyjmuje `GPT-5.5` jako domyślny wybór roboczy.
+- Obecnie wybór modelu chat w VS Code nadal robi się z pickera w sesji, więc repo ustawia to przez konwencję w skillach, a nie przez twardy globalny klucz settings.
 
 ## Po instalacji
 

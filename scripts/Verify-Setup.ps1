@@ -98,7 +98,11 @@ $expectedExtensions = @(
     "ms-vscode-remote.remote-containers",
     "ms-python.python",
     "ms-vscode.powershell",
-    "geequlim.godot-tools"
+    "geequlim.godot-tools",
+    "ms-dotnettools.unity",
+    "ms-vscode.cpptools",
+    "ms-vscode.cmake-tools",
+    "JacquesLucke.blender-development"
 )
 
 try {
@@ -116,7 +120,13 @@ catch {
 
 Write-Host "`nWeryfikacja lokalnych skilli:`n"
 $skillsPath = Join-Path $HOME ".vibe-coding\skills"
-foreach ($skill in @("web-game-vibe-coding.md", "business-websites-vibe-coding.md")) {
+foreach ($skill in @(
+    "web-game-vibe-coding.md",
+    "godot-vibe-coding.md",
+    "unity-vibe-coding.md",
+    "game-asset-pipeline-vibe-coding.md",
+    "business-websites-vibe-coding.md"
+)) {
     $path = Join-Path $skillsPath $skill
     Write-Result -Label $skill -Status $(if (Test-Path $path) { "OK" } else { "WARN" }) -Message $(if (Test-Path $path) { "" } else { "- uruchom Configure-VSCode.ps1" })
 }

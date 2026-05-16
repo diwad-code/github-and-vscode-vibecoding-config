@@ -63,6 +63,10 @@ ms-vscode.powershell
 
 # Pixel-art / game / docs
 geequlim.godot-tools
+ms-dotnettools.unity
+ms-vscode.cpptools
+ms-vscode.cmake-tools
+JacquesLucke.blender-development
 bierner.markdown-mermaid
 shd101wyy.markdown-preview-enhanced
 jebbs.plantuml

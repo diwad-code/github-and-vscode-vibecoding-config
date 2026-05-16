@@ -34,6 +34,7 @@
     "**/build": true
   },
   "git.autofetch": true,
+  "github.copilot.selectedCompletionModel": "GPT-5.4",
   "github.copilot.enable": {
     "*": true,
     "plaintext": false,

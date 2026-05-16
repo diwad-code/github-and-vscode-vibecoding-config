@@ -3,6 +3,10 @@
 ## Cel
 Tworzenie webowych gier 2D/3D i przygotowanie ich do dystrybucji jako aplikacje Android.
 
+## Preferowane modele
+- Chat/agent: GPT-5.5
+- Completions/inline suggestions: GPT-5.4
+
 ## Stack
 - Vite + TypeScript jako domyślny starter.
 - Phaser lub PixiJS dla 2D/pixel-art.

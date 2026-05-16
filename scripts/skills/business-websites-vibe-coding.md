@@ -3,6 +3,10 @@
 ## Cel
 Tworzenie profesjonalnych, zarządzanych stron firmowych z dobrym SEO, accessibility i deploymentem.
 
+## Preferowane modele
+- Chat/agent: GPT-5.5
+- Completions/inline suggestions: GPT-5.4
+
 ## Stack
 - Next.js, Astro albo Vite + React/Vue/Svelte zależnie od projektu.
 - Tailwind CSS dla szybkiego UI.

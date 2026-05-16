@@ -8,6 +8,24 @@
       "path": "scripts\\skills\\web-game-vibe-coding.md"
     },
     {
+      "name": "godot-vibe-coding",
+      "description": "Workflow dla Godot 4, GDScript/GDExtension, shaderów i eksportów 2D/3D.",
+      "source": "local",
+      "path": "scripts\\skills\\godot-vibe-coding.md"
+    },
+    {
+      "name": "unity-vibe-coding",
+      "description": "Workflow dla Unity, C#, scen/prefabów, inputu, shaderów i buildów desktop/mobile.",
+      "source": "local",
+      "path": "scripts\\skills\\unity-vibe-coding.md"
+    },
+    {
+      "name": "game-asset-pipeline-vibe-coding",
+      "description": "Workflow dla asset pipeline: Blender, Tiled, Aseprite/LibreSprite, eksporty i porządek licencji.",
+      "source": "local",
+      "path": "scripts\\skills\\game-asset-pipeline-vibe-coding.md"
+    },
+    {
       "name": "business-websites-vibe-coding",
       "description": "Workflow dla profesjonalnych stron firmowych, SEO, performance, accessibility i deploymentu.",
       "source": "local",
