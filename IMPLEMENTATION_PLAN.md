@@ -22,6 +22,7 @@ Zbudować potężny, automatyczny zestaw skryptów dla Windows 11, VS Code i VS 
 - [x] Zaktualizować README.
 - [x] Uruchomić końcową walidację składni/JSON.
 - [x] Uruchomić CodeQL checker.
+- [x] Follow-up review: poprawić weryfikację Capacitor CLI, aby akceptowała `cap` z `@capacitor/cli`.
 
 ## Architektura
 

@@ -37,6 +37,23 @@ function Test-OptionalCommand {
     Write-Result -Label $Name -Status $(if (Test-Command -Name $Name) { "OK" } else { "WARN" }) -Message $(if (Test-Command -Name $Name) { "" } else { "- opcjonalne, sprawdź fallback w README" })
 }
 
+function Test-OptionalCommandAny {
+    param(
+        [string]$Label,
+        [string[]]$Names
+    )
+
+    $ok = $false
+    foreach ($name in $Names) {
+        if (Test-Command -Name $name) {
+            $ok = $true
+            break
+        }
+    }
+
+    Write-Result -Label $Label -Status $(if ($ok) { "OK" } else { "WARN" }) -Message $(if ($ok) { "" } else { "- opcjonalne, sprawdź fallback w README" })
+}
+
 Write-Host "Weryfikacja narzędzi bazowych:`n"
 @("git", "gh", "node", "npm", "python", "dotnet") | ForEach-Object { Test-RequiredCommand -Name $_ }
 
@@ -46,7 +63,8 @@ Write-Host "`nWeryfikacja narzędzi web/business/game/mobile:`n"
 
 if ($InstallAndroidTooling) {
     Write-Host "`nWeryfikacja Android tooling:`n"
-    @("adb", "sdkmanager", "avdmanager", "ionic", "capacitor", "native-run") | ForEach-Object { Test-OptionalCommand -Name $_ }
+    @("adb", "sdkmanager", "avdmanager", "ionic", "native-run") | ForEach-Object { Test-OptionalCommand -Name $_ }
+    Test-OptionalCommandAny -Label "Capacitor CLI (cap/capacitor)" -Names @("cap", "capacitor")
 
     $androidHome = $env:ANDROID_HOME
     $androidSdkRoot = $env:ANDROID_SDK_ROOT
