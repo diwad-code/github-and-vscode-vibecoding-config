@@ -24,6 +24,7 @@ Zbudować potężny, automatyczny zestaw skryptów dla Windows 11, VS Code i VS 
 - [x] Uruchomić CodeQL checker.
 - [x] Follow-up review: poprawić weryfikację Capacitor CLI, aby akceptowała `cap` z `@capacitor/cli`.
 - [x] Final review: rozszerzyć realnie przydatny gamedev stack (Godot/Unity/Blender/C++/CMake), dodać brakujące skille i przepiąć domyślne modele na GPT-5.4/GPT-5.5.
+- [x] Follow-up review 2: zawęzić repo do web-first workflow i dopiąć ustawienia Copilot/MCP/AGENTS.md pod VS Code oraz VS Code Insiders.
 
 ## Architektura
 
@@ -33,7 +34,8 @@ Zbudować potężny, automatyczny zestaw skryptów dla Windows 11, VS Code i VS 
 - `scripts/config/vscode-extensions.txt` zawiera rozszerzenia dla VS Code i Insiders.
 - `scripts/config/vscode-settings.json` zawiera bazowe ustawienia UX/productivity/Copilot.
 - `scripts/config/skills-manifest.json` wskazuje lokalne i opcjonalne zdalne skille.
-- `scripts/skills/` zawiera lokalne skille startowe dla web/business oraz gamedev.
+- `scripts/skills/` zawiera lokalne skille startowe dla web/business.
+- `.github/copilot-instructions.md` i `AGENTS.md` dopinają repo-wide context dla Copilota i agentów.
 
 ## Kolejne rekomendowane kroki
 
@@ -41,4 +43,4 @@ Zbudować potężny, automatyczny zestaw skryptów dla Windows 11, VS Code i VS 
 - [ ] Dodać opcjonalny manifest z firmowymi, zatwierdzonymi zdalnymi skillami po wskazaniu URL-i.
 - [ ] Dodać test uruchamiany na Windows runnerze, jeżeli repo dostanie CI.
 - [ ] Rozważyć pinning wersji narzędzi npm/pip w osobnych manifestach enterprise.
-- [ ] Rozważyć osobny, opcjonalny przełącznik do ciężkich tooli gamedev (np. Unity Hub/Blender/Tiled), jeśli repo zacznie zarządzać też instalacją silników i asset toolchain poza VS Code.
+- [ ] Rozważyć wersjonowany przykładowy `.vscode/mcp.json`, jeśli zespół wybierze konkretny zestaw zatwierdzonych MCP serverów.

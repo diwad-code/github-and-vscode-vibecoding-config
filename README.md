@@ -17,11 +17,11 @@ Szczegółowy plan wdrożenia oraz lista TODO dla kolejnych AI znajduje się w:
 - Edytory: VS Code oraz opcjonalnie VS Code Insiders.
 - Copilot/GitHub: Copilot, Copilot Chat, GitHub PR, GitHub Actions, GitHub CLI.
 - Web/business: Node.js, pnpm, yarn, Vite, Next.js, Angular, Astro, Tailwind, ESLint, Prettier, Stylelint.
-- Game/web: Live Server, Godot tools, Unity, C/C++ + CMake pod natywne moduły, Blender workflow, Markdown/Mermaid, CLI pod prototypowanie web games.
+- Web workflow: Live Server, Markdown/Mermaid, prompt/instructions workflow, MCP discovery/gallery i CLI pod prototypowanie web apps/web games.
 - Android hybrid: Android Studio, JDK, Ionic, Capacitor, native-run, Cordova.
 - Backend/devops: Docker, Dev Containers, Kubernetes, YAML, Terraform, Postman/Thunder Client.
 - Python/.NET/Go/Rust: runtime’y, rozszerzenia i podstawowe narzędzia.
-- Skille: lokalne workflow dla web games, Godot, Unity, pipeline assetów i profesjonalnych stron firmowych kopiowane do `~\.vibe-coding\skills`.
+- Skille: lokalne workflow dla web apps, web games i profesjonalnych stron firmowych kopiowane do `~\.vibe-coding\skills`.
 
 ## Struktura
 
@@ -31,7 +31,9 @@ Szczegółowy plan wdrożenia oraz lista TODO dla kolejnych AI znajduje się w:
 - `/scripts/config/vscode-extensions.txt` – pełna lista rozszerzeń.
 - `/scripts/config/vscode-settings.json` – szablon ustawień UI/UX i produktywności.
 - `/scripts/config/skills-manifest.json` – manifest lokalnych i opcjonalnych zdalnych skilli.
-- `/scripts/skills/` – lokalne skille startowe dla web/business/gamedev.
+- `/scripts/skills/` – lokalne skille startowe dla web/business.
+- `/.github/copilot-instructions.md` – repozytoryjne instrukcje dla GitHub Copilot.
+- `/AGENTS.md` – instrukcje agentowe dla VS Code/Copilot przy włączonym `chat.useAgentsMdFile`.
 
 ## Szybki start: pełny tryb z VS Code Insiders i Androidem
 
@@ -79,6 +81,12 @@ Skrypty są idempotentne i kontynuują pracę przy błędach pojedynczych pakiet
 - Dla chat/agent workflow w skillach repo przyjmuje `GPT-5.5` jako domyślny wybór roboczy.
 - Obecnie wybór modelu chat w VS Code nadal robi się z pickera w sesji, więc repo ustawia to przez konwencję w skillach, a nie przez twardy globalny klucz settings.
 
+## Copilot / MCP / agent workflow w VS Code i Insiders
+
+- Wspólne ustawienia aktywują agent mode, `AGENTS.md`, MCP discovery/gallery, Copilot code actions, code search i next edit suggestions.
+- Repo nie pinuje zewnętrznych serwerów MCP na sztywno, żeby nie dodawać niezatwierdzonych integracji; zamiast tego przygotowuje VS Code/Insiders do ich wykrywania i bezpiecznego dodania.
+- Najlepsze praktyki na 2026 w tym repo to: repo-wide instructions w `.github/copilot-instructions.md`, root `AGENTS.md`, lokalne skille w `~\.vibe-coding\skills` oraz ręczne dodawanie tylko potrzebnych MCP serverów z zaufanych źródeł.
+
 ## Po instalacji
 
 1. Uruchom VS Code / VS Code Insiders.
@@ -91,4 +99,5 @@ Skrypty są idempotentne i kontynuują pracę przy błędach pojedynczych pakiet
 
 - Nie commituj sekretów, tokenów ani plików `.env` z danymi produkcyjnymi.
 - Zdalne skille dodawaj do `skills-manifest.json` tylko z zatwierdzonych źródeł.
+- Zewnętrzne MCP serwery dodawaj tylko z zatwierdzonych źródeł i z minimalnym zakresem uprawnień.
 - Dla firmowych projektów rozważ pinning wersji narzędzi w osobnych manifestach.

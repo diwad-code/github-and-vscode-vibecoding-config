@@ -94,15 +94,11 @@ $expectedExtensions = @(
     "esbenp.prettier-vscode",
     "bradlc.vscode-tailwindcss",
     "ms-vscode.vscode-typescript-next",
+    "yzhang.markdown-all-in-one",
     "ms-azuretools.vscode-docker",
     "ms-vscode-remote.remote-containers",
     "ms-python.python",
-    "ms-vscode.powershell",
-    "geequlim.godot-tools",
-    "ms-dotnettools.unity",
-    "ms-vscode.cpptools",
-    "ms-vscode.cmake-tools",
-    "JacquesLucke.blender-development"
+    "ms-vscode.powershell"
 )
 
 try {
@@ -121,10 +117,8 @@ catch {
 Write-Host "`nWeryfikacja lokalnych skilli:`n"
 $skillsPath = Join-Path $HOME ".vibe-coding\skills"
 foreach ($skill in @(
+    "web-app-vibe-coding.md",
     "web-game-vibe-coding.md",
-    "godot-vibe-coding.md",
-    "unity-vibe-coding.md",
-    "game-asset-pipeline-vibe-coding.md",
     "business-websites-vibe-coding.md"
 )) {
     $path = Join-Path $skillsPath $skill
