@@ -1,5 +1,7 @@
 # github-and-vscode-vibecoding-config
 
+> Wersja dokumentu: gpt5.5-2026.05.16-0.3.0
+
 Kompletny zestaw skryptów PowerShell do automatycznego przygotowania świeżego Windows 11 pod:
 - VS Code / VS Code Insiders,
 - GitHub Copilot Pro / Pro+,
@@ -11,6 +13,13 @@ Kompletny zestaw skryptów PowerShell do automatycznego przygotowania świeżego
 Szczegółowy plan wdrożenia oraz lista TODO dla kolejnych AI znajduje się w:
 
 - [`IMPLEMENTATION_PLAN.md`](IMPLEMENTATION_PLAN.md)
+
+## Zasady dokumentacji
+
+- Dokumentacja w tym repo **musi być aktualizowana na bieżąco przy każdej zmianie** skryptów, konfiguracji, workflow albo zakresu repo.
+- README, plan wdrożenia i wszystkie skille mają pozostawać spójne z aktualnym stanem plików w `scripts/`.
+- Każdy dokument Markdown w repo musi zawierać oznaczenie wersji w formacie `model-data-wersja`, np. `gpt5.4-2026.05.17-0.2.9`.
+- Każda zmiana merytoryczna dokumentu wymaga równoczesnego zaktualizowania jego oznaczenia wersji.
 
 ## Co instaluje i konfiguruje
 
@@ -26,8 +35,8 @@ Szczegółowy plan wdrożenia oraz lista TODO dla kolejnych AI znajduje się w:
 ## Struktura
 
 - `/scripts/Install-VibeCodingEnvironment.ps1` – główny, automatyczny instalator.
-- `/scripts/Configure-VSCode.ps1` – konfiguracja rozszerzeń, ustawień i skilli VS Code/Insiders.
-- `/scripts/Verify-Setup.ps1` – walidacja po instalacji.
+- `/scripts/Configure-VSCode.ps1` – instalacja rozszerzeń z `scripts/config/vscode-extensions.txt`, merge ustawień z `scripts/config/vscode-settings.json` oraz instalacja skilli z `scripts/config/skills-manifest.json`.
+- `/scripts/Verify-Setup.ps1` – walidacja komend bazowych, opcjonalnych narzędzi web/mobile/devops, kluczowych rozszerzeń VS Code i lokalnych skilli po instalacji.
 - `/scripts/config/vscode-extensions.txt` – pełna lista rozszerzeń.
 - `/scripts/config/vscode-settings.json` – szablon ustawień UI/UX i produktywności.
 - `/scripts/config/skills-manifest.json` – manifest lokalnych i opcjonalnych zdalnych skilli.
@@ -62,6 +71,15 @@ Przydatne po ręcznej instalacji narzędzi albo po aktualizacji listy rozszerze�
 .\scripts\Configure-VSCode.ps1 -UseInsiders
 ```
 
+## Przydatne parametry instalatora
+
+- `-UseInsiders` – używa VS Code Insiders i fallbackuje do stable, jeśli CLI insiders nie jest dostępne.
+- `-InstallAndroidTooling` – doinstalowuje Android Studio i rozszerza walidację o narzędzia Android/Capacitor.
+- `-SkipWingetPackages` – pomija instalację pakietów przez winget.
+- `-SkipNpmGlobals` – pomija globalne pakiety npm.
+- `-SkipPythonPackages` – pomija pakiety Python.
+- `-RetryCount <n>` – ustawia liczbę retry dla instalacji i pobrań.
+
 ## Zaawansowane fallbacki
 
 Skrypty są idempotentne i kontynuują pracę przy błędach pojedynczych pakietów:
@@ -79,7 +97,7 @@ Skrypty są idempotentne i kontynuują pracę przy błędach pojedynczych pakiet
 2. Zaloguj się do GitHub i GitHub Copilot.
 3. Uruchom Docker Desktop co najmniej raz, jeśli używasz kontenerów.
 4. Uruchom Android Studio i doinstaluj SDK/emulator, jeśli używasz Androida.
-5. Uruchom `Verify-Setup.ps1`, aby zobaczyć elementy OK/WARN/ERR.
+5. Uruchom `Verify-Setup.ps1`, aby zobaczyć elementy OK/WARN/ERR dla komend, rozszerzeń i lokalnych skilli.
 
 ## Uwagi bezpieczeństwa
 

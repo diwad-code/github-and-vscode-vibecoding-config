@@ -1,7 +1,13 @@
 # Business Websites Vibe Coding Skill
 
+> Wersja dokumentu: gpt5.5-2026.05.16-0.3.0
+
 ## Cel
 Tworzenie profesjonalnych, zarządzanych stron firmowych z dobrym SEO, accessibility i deploymentem.
+
+## Zasada dokumentacji
+- Każda zmiana workflow, stacku albo checklisty wymaga natychmiastowej aktualizacji tego dokumentu.
+- Przy każdej zmianie trzeba też podnieść oznaczenie wersji w formacie `model-data-wersja`.
 
 ## Stack
 - Next.js, Astro albo Vite + React/Vue/Svelte zależnie od projektu.
