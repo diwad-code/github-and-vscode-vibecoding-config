@@ -1,6 +1,9 @@
 # Plan wdrożenia vibe-coding environment
 
+> Wersja dokumentu: gpt5.5-2026.05.16-0.3.0
+
 Ten plik jest źródłem kontekstu dla kolejnych AI i ludzi kontynuujących pracę.
+Dokument musi być aktualizowany na bieżąco razem ze zmianami w repo i przy każdej zmianie musi dostać nową wersję w formacie `model-data-wersja`.
 
 ## Cel
 
@@ -20,6 +23,7 @@ Zbudować potężny, automatyczny zestaw skryptów dla Windows 11, VS Code i VS 
 - [x] Dodać lokalny katalog skilli oraz manifest do automatycznej instalacji.
 - [x] Rozszerzyć weryfikację środowiska po instalacji.
 - [x] Zaktualizować README.
+- [x] Ujednolicić wersjonowanie dokumentacji i dopisać regułę obowiązkowej bieżącej aktualizacji dokumentów.
 - [x] Uruchomić końcową walidację składni/JSON.
 - [x] Uruchomić CodeQL checker.
 - [x] Follow-up review: poprawić weryfikację Capacitor CLI, aby akceptowała `cap` z `@capacitor/cli`.
@@ -33,6 +37,7 @@ Zbudować potężny, automatyczny zestaw skryptów dla Windows 11, VS Code i VS 
 - `scripts/config/vscode-settings.json` zawiera bazowe ustawienia UX/productivity/Copilot.
 - `scripts/config/skills-manifest.json` wskazuje lokalne i opcjonalne zdalne skille.
 - `scripts/skills/` zawiera lokalne skille startowe.
+- Wszystkie dokumenty Markdown w repo mają obowiązkowy nagłówek wersji `model-data-wersja` i muszą być utrzymywane równolegle do zmian w kodzie lub konfiguracji.
 
 ## Kolejne rekomendowane kroki
 
