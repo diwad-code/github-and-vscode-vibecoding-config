@@ -21,7 +21,7 @@ Zbudować potężny, automatyczny zestaw skryptów dla Windows 11, VS Code i VS 
 - [x] Rozszerzyć weryfikację środowiska po instalacji.
 - [x] Zaktualizować README.
 - [x] Uruchomić końcową walidację składni/JSON.
-- [ ] Uruchomić CodeQL checker.
+- [x] Uruchomić CodeQL checker.
 
 ## Architektura
 
