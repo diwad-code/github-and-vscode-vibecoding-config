@@ -8,22 +8,39 @@
   "editor.minimap.enabled": true,
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "explicit"
   },
   "editor.inlineSuggest.enabled": true,
   "editor.fontLigatures": true,
   "editor.bracketPairColorization.enabled": true,
   "editor.guides.bracketPairs": "active",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "terminal.integrated.defaultProfile.windows": "PowerShell",
   "explorer.confirmDelete": false,
   "files.autoSave": "afterDelay",
   "files.autoSaveDelay": 1200,
+  "files.exclude": {
+    "**/.next": true,
+    "**/.turbo": true,
+    "**/dist": true,
+    "**/build": true
+  },
+  "search.exclude": {
+    "**/.next": true,
+    "**/.turbo": true,
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/build": true
+  },
   "git.autofetch": true,
   "github.copilot.enable": {
     "*": true,
     "plaintext": false,
-    "markdown": true
+    "markdown": true,
+    "scminput": true
   },
+  "github.copilot.chat.localeOverride": "pl",
   "chat.commandCenter.enabled": true,
   "extensions.ignoreRecommendations": false,
   "css.validate": true,
@@ -31,15 +48,23 @@
   "less.validate": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.preferences.importModuleSpecifier": "shortest",
   "emmet.triggerExpansionOnTab": true,
   "emmet.includeLanguages": {
     "javascript": "javascriptreact",
-    "typescript": "typescriptreact"
+    "typescript": "typescriptreact",
+    "vue-html": "html",
+    "postcss": "css"
   },
+  "tailwindCSS.emmetCompletions": true,
   "powershell.codeFormatting.preset": "OTBS",
   "python.analysis.typeCheckingMode": "basic",
   "python.analysis.autoImportCompletions": true,
   "files.associations": {
-    "*.css": "tailwindcss"
-  }
+    "*.css": "tailwindcss",
+    "*.pcss": "tailwindcss",
+    "*.mdx": "mdx"
+  },
+  "axe-linter.enable": true,
+  "liveServer.settings.donotShowInfoMsg": true
 }

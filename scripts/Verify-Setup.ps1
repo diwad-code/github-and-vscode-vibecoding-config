@@ -1,9 +1,12 @@
 [CmdletBinding()]
 param(
-    [switch]$UseInsiders
+    [switch]$UseInsiders,
+    [switch]$InstallAndroidTooling
 )
 
 $ErrorActionPreference = "Stop"
+$script:Failed = $false
+$script:Warnings = $false
 
 function Test-Command {
     param([Parameter(Mandatory = $true)][string]$Name)
@@ -13,53 +16,100 @@ function Test-Command {
 function Write-Result {
     param(
         [string]$Label,
-        [bool]$Passed
+        [string]$Status,
+        [string]$Message = ""
     )
 
-    if ($Passed) {
-        Write-Host "[OK]  $Label" -ForegroundColor Green
-    }
-    else {
-        Write-Host "[ERR] $Label" -ForegroundColor Red
+    switch ($Status) {
+        "OK" { Write-Host "[OK]   $Label $Message" -ForegroundColor Green }
+        "WARN" { Write-Host "[WARN] $Label $Message" -ForegroundColor Yellow; $script:Warnings = $true }
+        default { Write-Host "[ERR]  $Label $Message" -ForegroundColor Red; $script:Failed = $true }
     }
 }
 
-$requiredCommands = @("git", "node", "npm", "python", "dotnet")
-if ($UseInsiders) {
-    $requiredCommands += "code-insiders"
-}
-else {
-    $requiredCommands += "code"
+function Test-RequiredCommand {
+    param([string]$Name)
+    Write-Result -Label $Name -Status $(if (Test-Command -Name $Name) { "OK" } else { "ERR" })
 }
 
-$failed = $false
+function Test-OptionalCommand {
+    param([string]$Name)
+    Write-Result -Label $Name -Status $(if (Test-Command -Name $Name) { "OK" } else { "WARN" }) -Message $(if (Test-Command -Name $Name) { "" } else { "- opcjonalne, sprawdź fallback w README" })
+}
 
 Write-Host "Weryfikacja narzędzi bazowych:`n"
-foreach ($cmd in $requiredCommands) {
-    $ok = Test-Command -Name $cmd
-    Write-Result -Label $cmd -Passed $ok
-    if (-not $ok) { $failed = $true }
+@("git", "gh", "node", "npm", "python", "dotnet") | ForEach-Object { Test-RequiredCommand -Name $_ }
+
+Write-Host "`nWeryfikacja narzędzi web/business/game/mobile:`n"
+@("pnpm", "yarn", "npx", "tsc", "vite", "eslint", "prettier", "lighthouse", "vercel", "netlify", "firebase") | ForEach-Object { Test-OptionalCommand -Name $_ }
+@("docker", "go", "rustc", "cargo", "java") | ForEach-Object { Test-OptionalCommand -Name $_ }
+
+if ($InstallAndroidTooling) {
+    Write-Host "`nWeryfikacja Android tooling:`n"
+    @("adb", "sdkmanager", "avdmanager", "ionic", "capacitor", "native-run") | ForEach-Object { Test-OptionalCommand -Name $_ }
+
+    $androidHome = $env:ANDROID_HOME
+    $androidSdkRoot = $env:ANDROID_SDK_ROOT
+    if ($androidHome -or $androidSdkRoot) {
+        Write-Result -Label "ANDROID_HOME/ANDROID_SDK_ROOT" -Status "OK"
+    }
+    else {
+        Write-Result -Label "ANDROID_HOME/ANDROID_SDK_ROOT" -Status "WARN" -Message "- ustaw po pierwszym uruchomieniu Android Studio"
+    }
 }
 
-Write-Host "`nWeryfikacja rozszerzeń Copilot:`n"
+Write-Host "`nWeryfikacja VS Code:`n"
 $codeCmd = if ($UseInsiders) { "code-insiders" } else { "code" }
-$expectedExtensions = @("GitHub.copilot", "GitHub.copilot-chat")
+if (-not (Test-Command -Name $codeCmd) -and $UseInsiders -and (Test-Command -Name "code")) {
+    Write-Result -Label "code-insiders" -Status "WARN" -Message "- fallback do stable VS Code dostępny jako code"
+    $codeCmd = "code"
+}
+else {
+    Test-RequiredCommand -Name $codeCmd
+}
+
+$expectedExtensions = @(
+    "GitHub.copilot",
+    "GitHub.copilot-chat",
+    "GitHub.vscode-pull-request-github",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "bradlc.vscode-tailwindcss",
+    "ms-vscode.vscode-typescript-next",
+    "ms-azuretools.vscode-docker",
+    "ms-vscode-remote.remote-containers",
+    "ms-python.python",
+    "ms-vscode.powershell",
+    "geequlim.godot-tools"
+)
 
 try {
-    $installedExtensions = & $codeCmd --list-extensions
-    foreach ($ext in $expectedExtensions) {
-        $ok = $installedExtensions -contains $ext
-        Write-Result -Label $ext -Passed $ok
-        if (-not $ok) { $failed = $true }
+    if (Test-Command -Name $codeCmd) {
+        $installedExtensions = & $codeCmd --list-extensions
+        foreach ($ext in $expectedExtensions) {
+            $ok = $installedExtensions -contains $ext
+            Write-Result -Label $ext -Status $(if ($ok) { "OK" } else { "WARN" }) -Message $(if ($ok) { "" } else { "- brak rozszerzenia, uruchom Configure-VSCode.ps1" })
+        }
     }
 }
 catch {
-    Write-Warning "Nie udało się pobrać listy rozszerzeń: $($_.Exception.Message)"
-    $failed = $true
+    Write-Result -Label "VS Code extensions" -Status "ERR" -Message $_.Exception.Message
 }
 
-if ($failed) {
-    throw "Weryfikacja zakończona błędami. Sprawdź logi powyżej."
+Write-Host "`nWeryfikacja lokalnych skilli:`n"
+$skillsPath = Join-Path $HOME ".vibe-coding\skills"
+foreach ($skill in @("web-game-vibe-coding.md", "business-websites-vibe-coding.md")) {
+    $path = Join-Path $skillsPath $skill
+    Write-Result -Label $skill -Status $(if (Test-Path $path) { "OK" } else { "WARN" }) -Message $(if (Test-Path $path) { "" } else { "- uruchom Configure-VSCode.ps1" })
 }
 
-Write-Host "`nŚrodowisko wygląda poprawnie. Możesz zaczynać vibe-coding." -ForegroundColor Green
+if ($script:Failed) {
+    throw "Weryfikacja zakończona błędami. Sprawdź logi powyżej. Ostrzeżenia można naprawiać fallbackami z README."
+}
+
+if ($script:Warnings) {
+    Write-Host "`nŚrodowisko działa częściowo. Uzupełnij ostrzeżenia lub użyj fallbacków z README." -ForegroundColor Yellow
+}
+else {
+    Write-Host "`nŚrodowisko wygląda poprawnie. Możesz zaczynać vibe-coding." -ForegroundColor Green
+}
