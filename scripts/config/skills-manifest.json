@@ -2,6 +2,12 @@
   "installRootName": ".vibe-coding\\skills",
   "items": [
     {
+      "name": "web-app-vibe-coding",
+      "description": "Workflow dla nowoczesnych aplikacji webowych: frontend, API, auth, jakość, performance i deployment.",
+      "source": "local",
+      "path": "scripts\\skills\\web-app-vibe-coding.md"
+    },
+    {
       "name": "web-game-vibe-coding",
       "description": "Workflow dla web games, pixel-art, Phaser/Pixi/Three/Babylon i buildów Android przez Capacitor.",
       "source": "local",

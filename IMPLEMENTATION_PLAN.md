@@ -1,6 +1,6 @@
 # Plan wdrożenia vibe-coding environment
 
-> Wersja dokumentu: gpt5.5-2026.05.16-0.3.0
+> Wersja dokumentu: gpt5.5-2026.05.19-0.3.1
 
 Ten plik jest źródłem kontekstu dla kolejnych AI i ludzi kontynuujących pracę.
 Dokument musi być aktualizowany na bieżąco razem ze zmianami w repo i przy każdej zmianie musi dostać nową wersję w formacie `model-data-wersja`.
@@ -27,6 +27,8 @@ Zbudować potężny, automatyczny zestaw skryptów dla Windows 11, VS Code i VS 
 - [x] Uruchomić końcową walidację składni/JSON.
 - [x] Uruchomić CodeQL checker.
 - [x] Follow-up review: poprawić weryfikację Capacitor CLI, aby akceptowała `cap` z `@capacitor/cli`.
+- [x] Final review: rozszerzyć realnie przydatny gamedev stack (Godot/Unity/Blender/C++/CMake), dodać brakujące skille i przepiąć domyślne modele na GPT-5.4/GPT-5.5.
+- [x] Follow-up review 2: zawęzić repo do web-first workflow i dopiąć ustawienia Copilot/MCP/AGENTS.md pod VS Code oraz VS Code Insiders.
 
 ## Architektura
 
@@ -36,7 +38,8 @@ Zbudować potężny, automatyczny zestaw skryptów dla Windows 11, VS Code i VS 
 - `scripts/config/vscode-extensions.txt` zawiera rozszerzenia dla VS Code i Insiders.
 - `scripts/config/vscode-settings.json` zawiera bazowe ustawienia UX/productivity/Copilot.
 - `scripts/config/skills-manifest.json` wskazuje lokalne i opcjonalne zdalne skille.
-- `scripts/skills/` zawiera lokalne skille startowe.
+- `scripts/skills/` zawiera lokalne skille startowe dla web/business.
+- `.github/copilot-instructions.md` i `AGENTS.md` dopinają repo-wide context dla Copilota i agentów.
 - Wszystkie dokumenty Markdown w repo mają obowiązkowy nagłówek wersji `model-data-wersja` i muszą być utrzymywane równolegle do zmian w kodzie lub konfiguracji.
 
 ## Kolejne rekomendowane kroki
@@ -45,3 +48,4 @@ Zbudować potężny, automatyczny zestaw skryptów dla Windows 11, VS Code i VS 
 - [ ] Dodać opcjonalny manifest z firmowymi, zatwierdzonymi zdalnymi skillami po wskazaniu URL-i.
 - [ ] Dodać test uruchamiany na Windows runnerze, jeżeli repo dostanie CI.
 - [ ] Rozważyć pinning wersji narzędzi npm/pip w osobnych manifestach enterprise.
+- [ ] Rozważyć wersjonowany przykładowy `.vscode/mcp.json`, jeśli zespół wybierze konkretny zestaw zatwierdzonych serwerów MCP.

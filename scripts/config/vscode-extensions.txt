@@ -14,12 +14,14 @@ streetsidesoftware.code-spell-checker
 ms-vscode.hexeditor
 ritwickdey.LiveServer
 EditorConfig.EditorConfig
+yzhang.markdown-all-in-one
 
 # Frontend / web / business sites
 dbaeumer.vscode-eslint
 esbenp.prettier-vscode
 bradlc.vscode-tailwindcss
 formulahendry.auto-rename-tag
+formulahendry.auto-close-tag
 ecmel.vscode-html-css
 ms-vscode.vscode-typescript-next
 Vue.volar
@@ -61,8 +63,7 @@ tamasfe.even-better-toml
 # PowerShell / Windows automation
 ms-vscode.powershell
 
-# Pixel-art / game / docs
-geequlim.godot-tools
+# Web docs / diagrams
 bierner.markdown-mermaid
 shd101wyy.markdown-preview-enhanced
 jebbs.plantuml

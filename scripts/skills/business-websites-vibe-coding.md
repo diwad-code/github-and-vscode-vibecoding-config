@@ -1,10 +1,13 @@
 # Business Websites Vibe Coding Skill
 
-> Wersja dokumentu: gpt5.5-2026.05.16-0.3.0
+> Wersja dokumentu: gpt5.5-2026.05.19-0.3.1
 
 ## Cel
 Tworzenie profesjonalnych, zarządzanych stron firmowych z dobrym SEO, accessibility i deploymentem.
 
+## Preferowane modele
+- Chat/agent: GPT-5.5
+- Completions/inline suggestions: GPT-5.4
 ## Zasada dokumentacji
 - Każda zmiana workflow, stacku albo checklisty wymaga natychmiastowej aktualizacji tego dokumentu.
 - Przy każdej zmianie trzeba też podnieść oznaczenie wersji w formacie `model-data-wersja`.

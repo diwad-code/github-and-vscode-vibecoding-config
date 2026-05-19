@@ -54,6 +54,28 @@ function Test-OptionalCommandAny {
     Write-Result -Label $Label -Status $(if ($ok) { "OK" } else { "WARN" }) -Message $(if ($ok) { "" } else { "- opcjonalne, sprawdź fallback w README" })
 }
 
+function Get-ConfiguredExtensions {
+    param([Parameter(Mandatory = $true)][string]$ExtensionListPath)
+
+    if (-not (Test-Path $ExtensionListPath)) {
+        throw "Nie znaleziono listy rozszerzeń: $ExtensionListPath"
+    }
+
+    return Get-Content -Path $ExtensionListPath | ForEach-Object { $_.Trim() } | Where-Object {
+        $_ -and -not $_.StartsWith("#")
+    }
+}
+
+function Get-SkillsManifest {
+    param([Parameter(Mandatory = $true)][string]$ManifestPath)
+
+    if (-not (Test-Path $ManifestPath)) {
+        throw "Nie znaleziono manifestu skilli: $ManifestPath"
+    }
+
+    return Get-Content -Path $ManifestPath -Raw | ConvertFrom-Json
+}
+
 Write-Host "Weryfikacja narzędzi bazowych:`n"
 @("git", "gh", "node", "npm", "python", "dotnet") | ForEach-Object { Test-RequiredCommand -Name $_ }
 
@@ -78,6 +100,8 @@ if ($InstallAndroidTooling) {
 
 Write-Host "`nWeryfikacja VS Code:`n"
 $codeCmd = if ($UseInsiders) { "code-insiders" } else { "code" }
+$extensionListPath = Join-Path $PSScriptRoot "config\vscode-extensions.txt"
+$skillsManifestPath = Join-Path $PSScriptRoot "config\skills-manifest.json"
 if (-not (Test-Command -Name $codeCmd) -and $UseInsiders -and (Test-Command -Name "code")) {
     Write-Result -Label "code-insiders" -Status "WARN" -Message "- fallback do stable VS Code dostępny jako code"
     $codeCmd = "code"
@@ -86,23 +110,9 @@ else {
     Test-RequiredCommand -Name $codeCmd
 }
 
-$expectedExtensions = @(
-    "GitHub.copilot",
-    "GitHub.copilot-chat",
-    "GitHub.vscode-pull-request-github",
-    "dbaeumer.vscode-eslint",
-    "esbenp.prettier-vscode",
-    "bradlc.vscode-tailwindcss",
-    "ms-vscode.vscode-typescript-next",
-    "ms-azuretools.vscode-docker",
-    "ms-vscode-remote.remote-containers",
-    "ms-python.python",
-    "ms-vscode.powershell",
-    "geequlim.godot-tools"
-)
-
 try {
     if (Test-Command -Name $codeCmd) {
+        $expectedExtensions = Get-ConfiguredExtensions -ExtensionListPath $extensionListPath
         $installedExtensions = & $codeCmd --list-extensions
         foreach ($ext in $expectedExtensions) {
             $ok = $installedExtensions -contains $ext
@@ -115,10 +125,19 @@ catch {
 }
 
 Write-Host "`nWeryfikacja lokalnych skilli:`n"
-$skillsPath = Join-Path $HOME ".vibe-coding\skills"
-foreach ($skill in @("web-game-vibe-coding.md", "business-websites-vibe-coding.md")) {
-    $path = Join-Path $skillsPath $skill
-    Write-Result -Label $skill -Status $(if (Test-Path $path) { "OK" } else { "WARN" }) -Message $(if (Test-Path $path) { "" } else { "- uruchom Configure-VSCode.ps1" })
+try {
+    $skillsManifest = Get-SkillsManifest -ManifestPath $skillsManifestPath
+    $installRootName = if ($skillsManifest.installRootName) { [string]$skillsManifest.installRootName } else { ".vibe-coding\skills" }
+    $skillsPath = Join-Path $HOME $installRootName
+
+    foreach ($item in $skillsManifest.items) {
+        $skillFileName = "$([string]$item.name).md"
+        $path = Join-Path $skillsPath $skillFileName
+        Write-Result -Label $skillFileName -Status $(if (Test-Path $path) { "OK" } else { "WARN" }) -Message $(if (Test-Path $path) { "" } else { "- uruchom Configure-VSCode.ps1" })
+    }
+}
+catch {
+    Write-Result -Label "skills manifest" -Status "ERR" -Message $_.Exception.Message
 }
 
 if ($script:Failed) {
