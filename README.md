@@ -1,6 +1,6 @@
 # github-and-vscode-vibecoding-config
 
-> Wersja dokumentu: gpt5.5-2026.05.16-0.3.0
+> Wersja dokumentu: gpt5.5-2026.05.19-0.3.2
 
 Kompletny zestaw skryptów PowerShell do automatycznego przygotowania świeżego Windows 11 pod:
 - VS Code / VS Code Insiders,
