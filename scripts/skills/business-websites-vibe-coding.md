@@ -8,7 +8,6 @@ Tworzenie profesjonalnych, zarządzanych stron firmowych z dobrym SEO, accessibi
 ## Preferowane modele
 - Chat/agent: GPT-5.5
 - Completions/inline suggestions: GPT-5.4
-
 ## Zasada dokumentacji
 - Każda zmiana workflow, stacku albo checklisty wymaga natychmiastowej aktualizacji tego dokumentu.
 - Przy każdej zmianie trzeba też podnieść oznaczenie wersji w formacie `model-data-wersja`.
