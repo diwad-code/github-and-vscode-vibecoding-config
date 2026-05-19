@@ -1,11 +1,17 @@
 # Web App Vibe Coding Skill
 
+> Wersja dokumentu: gpt5.5-2026.05.19-0.3.1
+
 ## Cel
 Tworzenie nowoczesnych aplikacji webowych z naciskiem na szybkie iteracje, dobrą strukturę domeny, jakość UX i bezpieczny deployment.
 
 ## Preferowane modele
 - Chat/agent: GPT-5.5
 - Completions/inline suggestions: GPT-5.4
+
+## Zasada dokumentacji
+- Każda zmiana workflow, stacku albo checklisty wymaga natychmiastowej aktualizacji tego dokumentu.
+- Przy każdej zmianie trzeba też podnieść oznaczenie wersji w formacie `model-data-wersja`.
 
 ## Stack
 - Next.js, Astro albo Vite + React/Vue/Svelte zależnie od potrzeb projektu.

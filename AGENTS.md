@@ -1,5 +1,7 @@
 # AGENTS.md
 
+> Wersja dokumentu: gpt5.5-2026.05.19-0.3.1
+
 ## Repository intent
 - To repo konfiguruje Windows + VS Code / VS Code Insiders pod web-first vibe coding.
 - Najważniejsze workflow to web apps, business websites, web games, backend/API/devops i Android hybrid apps z web stacku.
